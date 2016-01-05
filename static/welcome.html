@@ -1,0 +1,99 @@
+<HTML>
+	<head>
+		<title>Help</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<style>
+		html, body {
+		  width:  100%;
+		  height: 100%;
+		  margin: 10px;
+		  background-color: #000;
+		  color: #C0C0C0;
+		  font-family: Arial, sans-serif;
+		  
+		}
+		canvas {
+			padding-left: 0;
+			    padding-right: 0;
+			    margin-left: auto;
+			    margin-right: auto;
+			    display: block;
+			    width: 360px;
+		}
+		
+		h2 {
+			
+		    font-weight:500;
+		    font-size:3em;
+		    margin:0 auto;
+		    padding: 0 40px;
+		    text-align: center;
+		    
+	    
+		}
+		
+		h1 {
+ 	       margin:0 auto;
+ 		   padding: 0 40px;
+		   text-align: center;
+		   font-size: 5em;
+		}
+		
+	
+		a{
+			text-decoration: none;
+		    color: rgba(255,255,255,0.7);
+		}
+	
+		</style>
+	</head>
+	<body>
+
+		<h1>Alexa Web</h1>
+		<canvas id="white"></canvas>
+		<h2><a href='/start'>Click to Login</a></h2>
+		<h2><a  href='/static/help.html' >Click for Help</a></h2>
+		<script>
+		
+		
+		function draw(col, text){
+			var c=document.getElementById(col);
+			var ctx=c.getContext("2d");
+			var circle = new Path2D();
+			ctx.canvas.width  = 360;
+			ctx.canvas.height = 240;
+			var x = c.width / 2;
+			var y = c.height / 2;
+			var radius = Math.min(c.width, c.height) / 4;
+			circle.arc(x, y, radius, 0, 2 * Math.PI);
+			ctx.lineWidth = 15;
+			ctx.rect(0, 0, c.width, c.height);
+			ctx.fill();
+			ctx.shadowOffsetX = 0;
+			ctx.shadowOffsetY = 0;
+			ctx.shadowBlur = 10;
+			ctx.shadowColor = col;//'#ffffee';
+			ctx.clearRect(0, 0, c.width, c.height);
+			ctx.fill();
+			ctx.strokeStyle = col;
+			ctx.stroke(circle);
+			ctx.textAlign = 'center';
+			ctx.fillStyle = col;
+			ctx.font = "20px sans-serif";
+			ctx.fillText(text, 180, 230);
+		}
+
+
+		
+		$(document).ready(function(){
+			draw('white', '');
+    
+		});
+
+	
+	
+		
+		
+		</script>
+	</body>
+</HTML>

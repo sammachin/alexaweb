@@ -1,0 +1,156 @@
+<HTML>
+	<head>
+		<title>Alexa Client</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="static/record.js"></script>
+		<style>
+		html, body {
+		  width:  100%;
+		  height: 100%;
+		  margin: 0px;
+		}
+		canvas {
+		    border: 3px solid #ccc;
+		    border-radius: 10px;
+		}
+		#help {
+			position: absolute;
+		    top: 5px;
+		    left: 5px;
+			z-index: 1;
+			font-size: 20px;
+			font-family: Arial, sans-serif;
+		}
+		#logout {
+			position: absolute;
+		    top: 5px;
+		    right: 5px;
+			z-index: 1;
+			font-size: 25px;
+		}
+		a:link {
+		    color: #C0C0C0;
+			text-decoration: none;
+		}
+
+		a:visited {
+		    color: #C0C0C0;
+			text-decoration: none;
+		}
+
+		a:hover {
+		    color: #FFFFFF;
+			text-decoration: none;
+		}
+
+		a:active {
+		    color: #C0C0C0;
+			text-decoration: none;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="touch">
+		<canvas id="myCanvas"></canvas>
+		</div>
+		<audio id="AudioElement"></audio>
+		<div id='logout' class="notSelectable">
+			<a href="/logout">&#9746</a>
+		</div>
+		<div id='help' class="notSelectable">
+			<a href="/static/help.html">Help</a>
+		</div>
+		<script>
+		var c=document.getElementById("myCanvas");
+		var ctx=c.getContext("2d");
+		var circle = new Path2D();
+		
+		function layout(){
+			ctx.canvas.width  = window.innerWidth;
+			ctx.canvas.height = window.innerHeight;
+			var x = c.width / 2;
+			var y = c.height / 2;
+			var radius = Math.min(c.width, c.height) / 4;
+			circle.arc(x, y, radius, 0, 2 * Math.PI);
+			ctx.lineWidth = 15;
+			ctx.rect(0, 0, c.width, c.height);
+			ctx.fill();
+			ctx.shadowOffsetX = 0;
+			ctx.shadowOffsetY = 0;
+			ctx.shadowBlur = 10;
+			ctx.shadowColor = '#ffffee';
+			
+			if (is_touch_device()){
+				console.log('Touch Enabled');
+				var el=document.getElementById("touch");
+				c.ontouchstart = function(e){
+					startrecord();
+				} 
+				c.ontouchend = function(e){
+					stoprecord();
+				}
+			}
+			else{
+				console.log('No Touch');
+				c.onmousedown = function(e){
+					startrecord();
+				} 
+				c.onmouseup = function(e){
+					stoprecord();
+				}
+			}
+		}
+			
+
+			
+			
+		function draw(col){
+			ctx.clearRect(0, 0, c.width, c.height);
+			ctx.fill();
+			ctx.strokeStyle = col;
+			ctx.stroke(circle);
+		}
+		
+		function log(data){
+			console.log('logging...')
+			console.log(data);
+		}
+		
+		function is_touch_device() {
+		  return !!('ontouchstart' in window);
+		}
+		
+		
+		window.onload = function() {
+			layout();
+			setup();
+		};
+		
+		window.onresize = function() {
+			location.reload();
+		};
+		
+		$(document).ready(function(){
+
+		   $('.notSelectable').disableSelection();
+    
+		});
+		
+		// This jQuery Plugin will disable text selection for Android and iOS devices.
+		// Stackoverflow Answer: http://stackoverflow.com/a/2723677/1195891
+		$.fn.extend({
+		    disableSelection: function() {
+		        this.each(function() {
+		            this.onselectstart = function() {
+		                return false;
+		            };
+		            this.unselectable = "on";
+		            $(this).css('-moz-user-select', 'none');
+		            $(this).css('-webkit-user-select', 'none');
+		        });
+		    }
+		});
+	
+		</script>
+	</body>
+</HTML>

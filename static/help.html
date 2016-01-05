@@ -1,0 +1,143 @@
+<HTML>
+	<head>
+		<title>Help</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<style>
+		html, body {
+		  width:  100%;
+		  height: 100%;
+		  margin: 0px;
+		  background-color: #000;
+		  font-family: Arial, sans-serif;
+		  color: #C0C0C0;
+		  
+		}
+		canvas {
+		    border: 0px;
+		}
+		#logout {
+			position: absolute;
+		    top: 5px;
+		    right: 5px;
+			z-index: 1;
+			font-size: 25px;
+		}
+		#help {
+			position: absolute;
+		    top: 5px;
+		    left: 5px;
+			z-index: 1;
+			font-size: 20px;
+			font-family: Arial, sans-serif;
+		}
+		a:link {
+		    color: #FFFFFF;
+			text-decoration: none;
+		}
+
+		a:visited {
+		    color: #FFFFFF;
+			text-decoration: none;
+		}
+
+		a:hover {
+		    color: blue;
+			text-decoration: none;
+		}
+
+		a:active {
+		    color: #C0C0C0;
+			text-decoration: none;
+		}
+		</style>
+	</head>
+	<body>
+		<br>
+		<br>
+		<h1>Alexa Web</h1>
+			<p>This is a browser based interface to Alexa, Amazon's virtual assistant which poweres the Echo.<br>
+				Alexa is not the same as an echo, echo has a number of additional features such as music playback and hotword detection that are not (yet) implemented here. <br>THIS IS NOT AN OFFICIAL AMAZON SERVICE IT IS AN INTERFACE TO THEIR API BUILT BY A INDEPENDANT 3RD PARTY</p>
+		<p> The interface is fairly simple, a coloured circle on the centre of the page indicates the state, a key to these colors is given below.<br>
+			Once the page has loaded and you see a white circle it is ready to use, you click (or touch) the circle and hold down then speak your command eg "What time is it in London" then release, Alexa will process you command and then reply to you in speech when the circle is green. If you see a brief red circle there was an error, try your request again. If Alexa doesn't understand the request she will say so.<br>If you want to logout then click the &#9746 symbol in the top right corner. </p>
+	    
+		
+		<canvas id="white"></canvas>
+		<canvas id="cyan"></canvas></canvas>
+		<canvas id="blue"></canvas>
+		<canvas id="#00ff00"></canvas>
+		<canvas id="red"></canvas>
+		<p> For a list of fun things you could try see this <a href="https://www.reddit.com/r/amazonecho/comments/2v15fx/list_of_known_easter_eggs_for_amazon_echo_so_far" target='new'>reddit thread</a><br>
+			This was built by <a href="http://sammachin.com" target='new'>Sam Machin </a> based on some code he wrote for the <a href="http://battlehack.org" target='new'>BattleHack</a> 2015 World Finals<br>
+	 Absolutly no warrenty is given this site is built as a interesting demo it might go away without warning, I don't keep any details of your requests I simply store a cookie to reference your Amazon login token, this is removed when you logout. You should also understand Amazon's Privacy Policy with regards to Alexa when using this service as I am merely providing a gateway.</p>
+		
+		<div id='logout' class="notSelectable">
+			<a href="/logout">&#9746</a>
+		</div>
+		<div id='help' class="notSelectable">
+			<a href="/">Back</a>
+		</div>	
+		<script>
+		
+		
+		function draw(col, text){
+			var c=document.getElementById(col);
+			var ctx=c.getContext("2d");
+			var circle = new Path2D();
+			ctx.canvas.width  = 360;
+			ctx.canvas.height = 240;
+			var x = c.width / 2;
+			var y = c.height / 2;
+			var radius = Math.min(c.width, c.height) / 4;
+			circle.arc(x, y, radius, 0, 2 * Math.PI);
+			ctx.lineWidth = 15;
+			ctx.rect(0, 0, c.width, c.height);
+			ctx.fill();
+			ctx.shadowOffsetX = 0;
+			ctx.shadowOffsetY = 0;
+			ctx.shadowBlur = 10;
+			ctx.shadowColor = col;//'#ffffee';
+			ctx.clearRect(0, 0, c.width, c.height);
+			ctx.fill();
+			ctx.strokeStyle = col;
+			ctx.stroke(circle);
+			ctx.textAlign = 'center';
+			ctx.fillStyle = col;
+			ctx.font = "20px sans-serif";
+			ctx.fillText(text, 180, 230);
+		}
+			
+
+
+		
+		$(document).ready(function(){
+			draw('white', 'Ready');
+			draw('cyan', 'Listening');
+			draw('blue', 'Processing');
+			draw('#00ff00', 'Speaking');
+			draw('red', 'Error');
+
+		   $('.notSelectable').disableSelection();
+    
+		});
+
+		// This jQuery Plugin will disable text selection for Android and iOS devices.
+		// Stackoverflow Answer: http://stackoverflow.com/a/2723677/1195891
+		$.fn.extend({
+		    disableSelection: function() {
+		        this.each(function() {
+		            this.onselectstart = function() {
+		                return false;
+		            };
+		            this.unselectable = "on";
+		            $(this).css('-moz-user-select', 'none');
+		            $(this).css('-webkit-user-select', 'none');
+		        });
+		    }
+		});
+	
+	
+		
+		
+		</script>
+	</body>
+</HTML>
