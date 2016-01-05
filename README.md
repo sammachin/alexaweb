@@ -24,7 +24,7 @@ make a note of your app name and if you want to rename it with
 
 Next you need to obtain a set of credentials from Amazon to use the Alexa Voice service, login at http://developer.amazon.com and Goto Alexa then Alexa Voice Service
 
-You need to create a new product type as a Device, for the ID use something like AlexaCHIP, create a new security profile and under the web settings allowed origins put http://localhost:5000 and as a return URL put  http://localhost:5000/code also if you are deploying to heroku add the heroku app url in addition to localhost:5000
+You need to create a new product type as an Application, for the ID use something like samsalexaweb, create a new security profile and under the web settings allowed origins put http://localhost:5000 and as a return URL put  http://localhost:5000/code also if you are deploying to heroku add the heroku app url in addition to localhost:5000
 
 Once you've got the security credentials put them into the creds.py file.
 
