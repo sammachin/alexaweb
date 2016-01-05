@@ -45,13 +45,7 @@ class MainHandler(BaseHandler):
 		self.write(resp)
 		self.finish()
 
-class TestHandler(tornado.web.RequestHandler):
-	@tornado.web.asynchronous
-	def get(self):
-		
-		self.write(path)
-		self.finish()
-				
+
 class StartAuthHandler(tornado.web.RequestHandler):
 	@tornado.web.asynchronous
 	def get(self):
