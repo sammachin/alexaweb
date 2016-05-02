@@ -72,7 +72,7 @@ class CodeAuthHandler(tornado.web.RequestHandler):
 	def get(self):
 		code=self.get_argument("code")
 		path = self.request.protocol + "://" + self.request.host 
-		callback = path+"code"
+		callback = path+"/code"
 		payload = {"client_id" : Client_ID, "client_secret" : Client_Secret, "code" : code, "grant_type" : "authorization_code", "redirect_uri" : callback }
 		url = "https://api.amazon.com/auth/o2/token"
 		r = requests.post(url, data = payload)
