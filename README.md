@@ -3,10 +3,10 @@
 Alexa in The Browser, see https://alexaweb.herokuapp.com for a demo
 
 ## Notes
-The client uses getUserMeda to access the microphone, this mean it will only work in Chrome, Firefox, Opera and Edge, no IE and no Safari Support, also the latest version of Chrome requires that the page be served via https for anything other than localhost, running from heroku is therefore useful ;)
+The client uses getUserMedia to access the microphone, this mean it will only work in Chrome, Firefox, Opera and Edge, no IE and no Safari Support, also the latest version of Chrome requires that the page be served via https for anything other than localhost, running from Heroku is therefore useful ;)
 
 ## Setup
-This app was built for heroku, if you want to run locally or on another platform you will require python 2.7 and a local install of redis, you will then need to install the modules listed in requirements.txt
+This app was built for Heroku, if you want to run locally or on another platform you will require Python 2.7 and a local install of Redis, you will then need to install the modules listed in requirements.txt
 ### Download this repo
 
 `git clone git@github.com:sammachin/alexaweb.git`
