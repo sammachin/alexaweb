@@ -60,10 +60,10 @@
 			<p>This is a browser based interface to Alexa, Amazon's virtual assistant which poweres the Echo.<br>
 				Alexa is not the same as an echo, echo has a number of additional features such as music playback and hotword detection that are not (yet) implemented here. <br>THIS IS NOT AN OFFICIAL AMAZON SERVICE IT IS AN INTERFACE TO THEIR API BUILT BY A INDEPENDANT 3RD PARTY</p>
 		<p> The interface is fairly simple, a coloured circle on the centre of the page indicates the state, a key to these colors is given below.<br>
-			Once the page has loaded and you see a white circle it is ready to use, you click (or touch) the circle and hold down then speak your command eg "What time is it in London" then release, Alexa will process you command and then reply to you in speech when the circle is green. If you see a brief red circle there was an error, try your request again. If Alexa doesn't understand the request she will say so.<br>If you want to logout then click the &#9746 symbol in the top right corner. </p>
+			Once the page has loaded and you see a gray circle it is ready to use, you click (or touch) the circle and hold down then speak your command eg "What time is it in London" then release, Alexa will process you command and then reply to you in speech when the circle is green. If you see a brief red circle there was an error, try your request again. If Alexa doesn't understand the request she will say so.<br>If you want to logout then click the &#9746 symbol in the top right corner. </p>
 	    
 		
-		<canvas id="white"></canvas>
+		<canvas id="#bbcccc"></canvas>
 		<canvas id="cyan"></canvas></canvas>
 		<canvas id="blue"></canvas>
 		<canvas id="#00ff00"></canvas>
@@ -112,7 +112,7 @@
 
 		
 		$(document).ready(function(){
-			draw('white', 'Ready');
+			draw('#bbcccc', 'Ready');
 			draw('cyan', 'Listening');
 			draw('blue', 'Processing');
 			draw('#00ff00', 'Speaking');

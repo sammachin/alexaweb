@@ -84,7 +84,7 @@ function stoprecord(){
 	  		      var objectUrl = URL.createObjectURL(blob);
 	  			  audio.addEventListener('ended',function(){
 					  if (playing == 'response'){
-					  	draw('white');
+					  	draw('#bbcccc');
 					  }
 					  playing = null;
 	  			  });
@@ -98,7 +98,7 @@ function stoprecord(){
 				}
 				else{
 					draw('red');
-					window.setTimeout(draw, 750, 'white');
+					window.setTimeout(draw, 750, '#bbcccc');
 				}
 					
 				
@@ -169,5 +169,5 @@ function success(e){
 
     volume.connect (recorder);
     recorder.connect (context.destination); 
-	draw('white');
+	draw('#bbcccc');
 }
