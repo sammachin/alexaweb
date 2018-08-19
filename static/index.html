@@ -28,6 +28,7 @@
 			z-index: 1;
 			font-size: 25px;
 		}
+    /*
 		a:link {
 		    color: #C0C0C0;
 			text-decoration: none;
@@ -47,6 +48,7 @@
 		    color: #C0C0C0;
 			text-decoration: none;
 		}
+    */
 		</style>
 	</head>
 	<body>
@@ -74,11 +76,11 @@
 			circle.arc(x, y, radius, 0, 2 * Math.PI);
 			ctx.lineWidth = 15;
 			ctx.rect(0, 0, c.width, c.height);
-			ctx.fill();
+			//ctx.fill();
 			ctx.shadowOffsetX = 0;
 			ctx.shadowOffsetY = 0;
 			ctx.shadowBlur = 10;
-			ctx.shadowColor = '#ffffee';
+			ctx.shadowColor = '#bbcccc';
 			
 			if (is_touch_device()){
 				console.log('Touch Enabled');
@@ -106,7 +108,7 @@
 			
 		function draw(col){
 			ctx.clearRect(0, 0, c.width, c.height);
-			ctx.fill();
+			//ctx.fill();
 			ctx.strokeStyle = col;
 			ctx.stroke(circle);
 		}

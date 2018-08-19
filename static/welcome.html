@@ -7,8 +7,8 @@
 		  width:  100%;
 		  height: 100%;
 		  margin: 10px;
-		  background-color: #000;
-		  color: #C0C0C0;
+		  /*background-color: #000;
+		  color: #C0C0C0;*/
 		  font-family: Arial, sans-serif;
 		  
 		}
@@ -40,17 +40,17 @@
 		}
 		
 	
-		a{
+		/*a{
 			text-decoration: none;
 		    color: rgba(255,255,255,0.7);
-		}
+		}*/
 	
 		</style>
 	</head>
 	<body>
 
 		<h1>Alexa Web</h1>
-		<canvas id="white"></canvas>
+		<canvas id="#bbcccc"></canvas>
 		<h2><a href='/start'>Click to Login</a></h2>
 		<h2><a  href='/static/help.html' >Click for Help</a></h2>
 		<script>
@@ -68,13 +68,13 @@
 			circle.arc(x, y, radius, 0, 2 * Math.PI);
 			ctx.lineWidth = 15;
 			ctx.rect(0, 0, c.width, c.height);
-			ctx.fill();
+			//ctx.fill();
 			ctx.shadowOffsetX = 0;
 			ctx.shadowOffsetY = 0;
 			ctx.shadowBlur = 10;
 			ctx.shadowColor = col;//'#ffffee';
 			ctx.clearRect(0, 0, c.width, c.height);
-			ctx.fill();
+			//ctx.fill();
 			ctx.strokeStyle = col;
 			ctx.stroke(circle);
 			ctx.textAlign = 'center';
@@ -86,7 +86,7 @@
 
 		
 		$(document).ready(function(){
-			draw('white', '');
+			draw('#bbcccc', '');
     
 		});
 

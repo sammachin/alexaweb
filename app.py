@@ -83,7 +83,7 @@ class CodeAuthHandler(tornado.web.RequestHandler):
 		red.expire(uid+"-access_token", 3600)
 		red.set(uid+"-refresh_token", resp['refresh_token'])
 		self.set_cookie("user", uid)
-		self.redirect("/")					
+		self.redirect(post_auth_redirect)					
 
 class LogoutHandler(BaseHandler):
 	@tornado.web.authenticated
@@ -160,7 +160,7 @@ class AudioHandler(BaseHandler):
 def main():
 	settings = {
 	    "cookie_secret": "parisPOLANDbroadFENCEcornWOULD",
-	    "login_url": "/static/welcome.html",
+	    "login_url": welcome_page,
 	}
 	static_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
 	application = tornado.web.Application([(r"/", MainHandler),
